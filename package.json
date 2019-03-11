@@ -1,0 +1,16 @@
+{
+  "name": "PokeTeam",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/EconClass/PokeAPI.git",
+  "author": "EconClass <bizmail327@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.18"
+  }
+}

@@ -1,4 +1,5 @@
 const mongoose = reqire('mongoose'),
+      bcrypt = require('bcrypt'),
       Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -8,4 +9,19 @@ const UserSchema = new Schema({
 },
 { timestamps: true });
 
-module.exports = mongoose.model ('User', UserSchema );
+UserSchema.pre('save', (next) => {
+  // Check if password has been modified for this document.
+  const user = this;
+  if( !user.isModified('password')){
+    return next();
+  };
+  // Salt and Hash password before saving the document.
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+module.exports = mongoose.model('User', UserSchema);

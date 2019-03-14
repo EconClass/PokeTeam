@@ -15,7 +15,7 @@ UserSchema.pre('save', (next) => {
   if( !user.isModified('password')){
     return next();
   };
-  // Salt and Hash password before saving the document.
+  // Encrypt password before saving the document.
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (err, hash) => {
       user.password = hash;

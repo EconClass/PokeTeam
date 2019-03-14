@@ -1,17 +1,18 @@
 const router = require('express').Router(),
-      teamControls = require('../controllers/teamsControllers.js');
+      teamControls = require('../controllers/teamsControllers.js'),
+      errHandler = require('../utils/errorHandler.js');
 
 // CREATE TEAM
-router.post('./team', teamControls.createTeam);
+router.post('./team', errHandler(teamControls.createTeam));
 
 // UPDATE TEAM
-router.post('./team/:teamId', teamControls.updateTeam);
+router.post('./team/:teamId', errHandler(teamControls.updateTeam));
 
 // SEE ALL TEAMS
-router.post('./team/all', teamControls.allTeams);
+router.post('./team/all', errHandler(teamControls.allTeams));
 
 // SEE ONE TEAM
-router.post('./team/:teamId', teamControls.oneTeam);
+router.post('./team/:teamId', errHandler(teamControls.oneTeam));
 
 // SEE ONE TEAM
-router.DELTE('./team/:teamId', teamControls.deleteTeam);
+router.DELTE('./team/:teamId', errHandler(teamControls.deleteTeam));

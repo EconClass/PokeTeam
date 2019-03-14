@@ -3,18 +3,18 @@ const router = require('express').Router(),
       errHandler = require('../utils/errorHandler.js');
 
 // CREATE TEAM
-router.post('./team', errHandler(teamControls.createTeam));
+router.post('/team', errHandler(teamControls.createTeam));
 
 // UPDATE TEAM
-router.post('./team/:teamId', errHandler(teamControls.updateTeam));
+router.post('/team/:teamId', errHandler(teamControls.updateTeam));
 
 // SEE ALL TEAMS
-router.post('./team/all', errHandler(teamControls.allTeams));
+router.post('/team/all', errHandler(teamControls.allTeams));
 
 // SEE ONE TEAM
-router.post('./team/:teamId', errHandler(teamControls.oneTeam));
+router.post('/team/:teamId', errHandler(teamControls.oneTeam));
 
 // SEE ONE TEAM
-router.delete('./team/:teamId', errHandler(teamControls.deleteTeam));
+router.delete('/team/:teamId', errHandler(teamControls.deleteTeam));
 
 module.exports = router;

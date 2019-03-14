@@ -1,23 +1,14 @@
 const router = require('express').Router(),
-      User = require('../models/user.js');
+      authControls = require('../controllers/authControllers.js');
 
+// CREATE USER
+router.post('/user', authControls.createUser);
 
-//=============CREATE USER=============\\
-router.post('/user', ( req, res ) => {
-  //
-});
+// USER INFO
+router.get('/user/:userId', authControls.seeUser);
 
-//=============USER INFO=============\\
-router.get('/user/:userId', ( req, res ) => {
-  //
-});
+// UPDATE USER INFO
+router.put('/user/:userId', authControls.updateUser);
 
-//=============UPDATE USER INFO=============\\
-router.put('/user/:userId', ( req, res ) => {
-  //
-});
-
-//=============DELETE USER ACCOUNT=============\\
-router.delete('/user/:userId', ( req, res ) => {
-  //
-});
+// DELETE USER ACCOUNT
+router.delete('/user/:userId', authControls.deleteUser);

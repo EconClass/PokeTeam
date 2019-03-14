@@ -6,13 +6,13 @@ const router = require('express').Router(),
 router.post('/team', errHandler(teamControls.createTeam));
 
 // UPDATE TEAM
-router.post('/team/:teamId', errHandler(teamControls.updateTeam));
+router.put('/team/:teamId', errHandler(teamControls.updateTeam));
 
 // SEE ALL TEAMS
-router.post('/team/all', errHandler(teamControls.allTeams));
+router.get('/teams/all', errHandler(teamControls.allTeams));
 
 // SEE ONE TEAM
-router.post('/team/:teamId', errHandler(teamControls.oneTeam));
+router.get('/team/:teamId', errHandler(teamControls.oneTeam));
 
 // SEE ONE TEAM
 router.delete('/team/:teamId', errHandler(teamControls.deleteTeam));

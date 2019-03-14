@@ -19,6 +19,8 @@ app.use(methodoverride);
 require('./data/poketeam-db');
 
 // Routers
+require('./routers/auth');
+require('./routers/teams');
 
 // Access Port
 app.listen(port, () => {

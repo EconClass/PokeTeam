@@ -1,4 +1,4 @@
-const mongoose = reqire('mongoose'),
+const mongoose = require('mongoose'),
       bcrypt = require('bcrypt'),
       Schema = mongoose.Schema;
 

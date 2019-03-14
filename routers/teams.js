@@ -15,4 +15,6 @@ router.post('./team/all', errHandler(teamControls.allTeams));
 router.post('./team/:teamId', errHandler(teamControls.oneTeam));
 
 // SEE ONE TEAM
-router.DELTE('./team/:teamId', errHandler(teamControls.deleteTeam));
+router.delete('./team/:teamId', errHandler(teamControls.deleteTeam));
+
+module.exports = router;

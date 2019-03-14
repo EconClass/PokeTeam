@@ -1,7 +1,6 @@
 if (!process.env.PORT) {
-  require('dotenv').config()
-  process.env.NODE_ENV = "dev"
-}
+  require('dotenv').config();
+};
 
 const express = require('express'),
       bodyparser = require('body-parser'),
@@ -23,5 +22,5 @@ require('./data/poketeam-db');
 
 // Access Port
 app.listen(port, () => {
-  console.log(`Server listening on port: ${port}`)
-})
+  console.log(`Server listening on port: ${port}`);
+});

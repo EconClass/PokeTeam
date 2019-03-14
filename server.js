@@ -13,14 +13,16 @@ const express = require('express'),
 // Dependencies
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
-app.use(methodoverride);
+app.use(methodoverride('_method'));
 
 // Mongoose Connection
 require('./data/poketeam-db');
 
 // Routers
-require('./routers/auth');
-require('./routers/teams');
+const authRoutes = require('./routers/auth');
+const teamRoutes = require('./routers/teams');
+app.use(authRoutes);
+app.use(teamRoutes);
 
 // Access Port
 app.listen(port, () => {

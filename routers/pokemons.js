@@ -3,7 +3,7 @@ const router = require('express').Router(),
       errHandler = require('../utils/errorHandler.js');
 
 // GET POKEMON BY NAME
-router.get('/pokemon/:pokeName', errHandler(pokemonControls.getAbilities));
+router.get('/pokemon/:pokeName', errHandler(pokemonControls.getPokemon));
 
 // GET ALL LEARNABLE MOVES OF A POKEMON
 router.get('/pokemon/:pokeName/moves', errHandler(pokemonControls.getMoves));
@@ -13,3 +13,5 @@ router.get('/pokemon/held-items', errHandler(pokemonControls.getItems));
 
 // GET LIST OF ALL NATURES
 router.get('/pokemon/natures', errHandler(pokemonControls.getNatures));
+
+module.exports = router;

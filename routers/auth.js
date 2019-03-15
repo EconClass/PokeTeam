@@ -10,13 +10,10 @@ router.get('/', (req, res) => {
 // CREATE USER
 router.post('/user', errHandler(authControls.createUser));
 
-// USER INFO
-router.get('/user/:userId', errHandler(authControls.seeUser));
-
-// UPDATE USER INFO
-router.put('/user/:userId', errHandler(authControls.updateUser));
-
-// DELETE USER ACCOUNT
-router.delete('/user/:userId', errHandler(authControls.deleteUser));
+// 
+router.route('/user/:userId')
+  .get(errHandler(authControls.seeUser)) // SEE USER INFO
+  .put(errHandler(authControls.updateUser)) // UPDATE USER INFO
+  .delete(errHandler(authControls.deleteUser)); // DELETE USER ACCOUNT
 
 module.exports = router;

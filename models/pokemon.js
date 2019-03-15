@@ -8,7 +8,8 @@ const PokemonSchema = new Schema({
   nature: String,
   heldItem: String,
   stats: Object,
-  moves: Object,
+  moves: [String],
+  type: [String]
 },
 { timestamps: true });
 

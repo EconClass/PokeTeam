@@ -9,9 +9,12 @@ router.get('/pokemon/:pokeName', errHandler(pokemonControls.getPokemon));
 router.get('/pokemon/:pokeName/moves', errHandler(pokemonControls.getMoves));
 
 // GET A LIST OF ALL HELD ITEMS
-router.get('/pokemon/held-items', errHandler(pokemonControls.getItems));
+router.get('/held-items', errHandler(pokemonControls.getItems));
 
 // GET LIST OF ALL NATURES
-router.get('/pokemon/natures', errHandler(pokemonControls.getNatures));
+router.get('/natures', errHandler(pokemonControls.getNatures));
+
+// GET MOVE INFO BY NAME
+router.get('/move/:moveName', errHandler(pokemonControls.moveInfo));
 
 module.exports = router;

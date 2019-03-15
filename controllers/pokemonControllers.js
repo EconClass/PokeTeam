@@ -29,17 +29,56 @@ async function getPokemon(req, res) {
     abltyArray.push(toAdd) 
   }
 
+  // Reformat type(s) of Pokemon
+  let typeArray = [];
+  for(i = 0; i < pokeRes.types.length; i++) {
+    console.log(pokeRes.types[i].type.name)
+    typeArray.push(pokeRes.types[i].type.name) 
+  }
+  console.log(typeArray)
   // Create a new pokemon model with relevant information
   let pokemon = new Pokemon({ 
     name: pokeRes.name,
     image: pokeRes.sprites.front_default,
     stats: pokeStats,
     abilities: abltyArray,
+    type: typeArray
   });
   
   res.send(pokemon)
 }
 
+async function getMoves(req, res) {
+  let pokeRes = await P.getPokemonByName(req.params.pokeName);
+  let pokeMoves = pokeRes.moves;
+  let movesArray = [];
+
+  for(i = 0; i < pokeMoves.length; i++) {
+    movesArray.push(pokeMoves[i].move);
+  };
+
+  res.send(movesArray)
+};
+
+async function moveInfo(req, res) {
+  let body = await P.getMoveByName(req.params.moveName);
+  let resObj = {};
+
+  // Restructure info 
+  resObj.accuracy = body.accuracy;
+  resObj.power = body.power;
+  resObj.pp = body.pp;
+  resObj.priority = body.priority;
+  resObj.name = body.name;
+  resObj.class = body.damage_class.name;
+  resObj.type = body.type.name;
+  resObj.target = body.target.name;
+  resObj.effect = body.effect_entries[0].short_effect;
+
+  res.send(resObj);
+};
 module.exports = {
   getPokemon,
+  getMoves,
+  moveInfo,
 }

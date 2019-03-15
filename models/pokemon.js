@@ -3,6 +3,7 @@ const mongoose = require('mongoose'),
 
 const PokemonSchema = new Schema({
   name: { type: String, required: true },
+  image: { type: String, required: true },
   ability: String,
   nature: String,
   heldItem: String,

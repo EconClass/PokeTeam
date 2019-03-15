@@ -50,6 +50,21 @@ async@2.6.1:
   dependencies:
     lodash "^4.17.10"
 
+async@^2.0.1:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.6.2.tgz#18330ea7e6e313887f5d2f2a904bac6fe4dd5381"
+  integrity sha512-H1qVYh1MYhEEFLsP97cVKqCGo7KfCyTt6uEWqsTBr9SO84oK9Uwbyd/yCW+6rKJLHksBNUVWZDAjfS+Ccx0Bbg==
+  dependencies:
+    lodash "^4.17.11"
+
+axios@^0.17.0:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.17.1.tgz#2d8e3e5d0bdbd7327f91bc814f5c57660f81824d"
+  integrity sha1-LY4+XQvb1zJ/kbyBT1xXZg+Bgk0=
+  dependencies:
+    follow-redirects "^1.2.5"
+    is-buffer "^1.1.5"
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -166,6 +181,13 @@ debug@3.1.0:
   dependencies:
     ms "2.0.0"
 
+debug@^3.2.6:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
+  integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
+  dependencies:
+    ms "^2.1.1"
+
 deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
@@ -212,6 +234,11 @@ encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
+
+es6-promise@^3.2.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
+  integrity sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM=
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -271,6 +298,13 @@ finalhandler@1.1.1:
     parseurl "~1.3.2"
     statuses "~1.4.0"
     unpipe "~1.0.0"
+
+follow-redirects@^1.2.5:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.7.0.tgz#489ebc198dc0e7f64167bd23b03c4c19b5784c76"
+  integrity sha512-m/pZQy4Gj287eNy94nivy5wchN3Kp+Q5WgUPNy5lJSZ3sgkVKSYV/ZChMAQVIgx1SqfZ2zBZtPA2YlXIWxxJOQ==
+  dependencies:
+    debug "^3.2.6"
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -379,6 +413,11 @@ ipaddr.js@1.8.0:
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.8.0.tgz#eaa33d6ddd7ace8f7f6fe0c9ca0440e706738b1e"
   integrity sha1-6qM9bd16zo9/b+DJygRA5wZzix4=
 
+is-buffer@^1.1.5:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
+  integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
+
 is-fullwidth-code-point@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-1.0.0.tgz#ef9e31386f031a7f0d643af82fde50c457ef00cb"
@@ -469,7 +508,7 @@ lodash.once@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
-lodash@^4.17.10:
+lodash@^4.17.10, lodash@^4.17.11:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -478,6 +517,11 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
+
+memory-cache@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/memory-cache/-/memory-cache-0.1.6.tgz#2ed9933ed7a8c718249be7366f7ca8749acf8a24"
+  integrity sha1-LtmTPteoxxgkm+c2b3yodJrPiiQ=
 
 memory-pager@^1.0.2:
   version "1.5.0"
@@ -750,6 +794,16 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
+
+pokedex-promise-v2@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/pokedex-promise-v2/-/pokedex-promise-v2-3.1.1.tgz#81fbf51f3ec137fef4efd77859488cffbb581b1d"
+  integrity sha512-w2v8SbBfa/fZGofL4Js+BvD6sFrerEnqeQYYuSalxyAELas6mbL+JqMmKSGtwu8NE/j6SaULGtGtVhN+oN0r3g==
+  dependencies:
+    async "^2.0.1"
+    axios "^0.17.0"
+    es6-promise "^3.2.1"
+    memory-cache "^0.1.6"
 
 process-nextick-args@~2.0.0:
   version "2.0.0"

@@ -17,15 +17,15 @@ async function getPokemon(req, res) {
   }
   
   // Reformat possible abilities of Pokemon
-  let abltyArray = []
-  for(i = 0; i < pokeRes.abilities.length-1; i++) {
+  let abltyArray = [];
+  for(i = 0; i < pokeRes.abilities.length; i++) {
     let toAdd = {}
     if(pokeRes.abilities[i].is_hidden == true) {
       toAdd.hidden = true
     } else {
       toAdd.hidden = false
     }
-    toAdd.ability = pokeRes.abilities[i].name
+    toAdd.ability = pokeRes.abilities[i].ability.name
     abltyArray.push(toAdd) 
   }
 
@@ -38,4 +38,8 @@ async function getPokemon(req, res) {
   });
   
   res.send(pokemon)
+}
+
+module.exports = {
+  getPokemon,
 }

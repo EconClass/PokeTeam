@@ -21,9 +21,10 @@ require('./data/poketeam-db');
 // Routers
 const authRoutes = require('./routers/auth');
 const teamRoutes = require('./routers/teams');
+const pokeRoutes = require('./routers/pokemons.js')
 app.use(authRoutes);
 app.use(teamRoutes);
-
+app.use(pokeRoutes);
 // Access Port
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);

@@ -15,6 +15,6 @@ router.get('/held-items', errHandler(pokemonControls.getItems));
 router.get('/natures', errHandler(pokemonControls.getNatures));
 
 // GET MOVE INFO BY NAME
-router.get('/move/:moveName', errHandler(pokemonControls.moveInfo));
+router.get('/move/:moveName', errHandler(pokemonControls.getMoveInfo));
 
 module.exports = router;

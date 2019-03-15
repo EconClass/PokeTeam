@@ -1,41 +1,43 @@
 const Pokemon = require('../models/pokemon.js'),
       Pokedex = require('pokedex-promise-v2'),
-      P = new Pokedex();
+      P = new Pokedex(),
+      helpers = require('../utils/helpers.js');
 
+// =============POKEMON INFO CONTROLS============= \\
 async function getPokemon(req, res) {
   // This will return with way more information than we need
   let pokeRes = await P.getPokemonByName(req.params.pokeName);
 
   // Reformat stats of pokemon
-  let pokeStats = {
-    speed: pokeRes.stats[0].base_stat,
-    spDef: pokeRes.stats[1].base_stat,
-    spAtk: pokeRes.stats[2].base_stat,
-    def: pokeRes.stats[3].base_stat,
-    atk: pokeRes.stats[4].base_stat,
-    hp: pokeRes.stats[5].base_stat,
-  }
+  let pokeStats = {};
+  
+  for(i = 0; i < pokeRes.stats.length; i++) {
+    let statName = pokeRes.stats[i].stat.name;
+    pokeStats[statName] = pokeRes.stats[i].base_stat;
+  };
   
   // Reformat possible abilities of Pokemon
   let abltyArray = [];
   for(i = 0; i < pokeRes.abilities.length; i++) {
-    let toAdd = {}
+    let toAdd = {};
+
     if(pokeRes.abilities[i].is_hidden == true) {
-      toAdd.hidden = true
+      toAdd.hidden = true;
     } else {
-      toAdd.hidden = false
-    }
-    toAdd.ability = pokeRes.abilities[i].ability.name
-    abltyArray.push(toAdd) 
-  }
+      toAdd.hidden = false;
+    };
+
+    toAdd.ability = pokeRes.abilities[i].ability.name;
+    abltyArray.push(toAdd);
+  };
 
   // Reformat type(s) of Pokemon
+  // helpers.arrayObjProperty(pokeRes.types, 'type[name]')
   let typeArray = [];
   for(i = 0; i < pokeRes.types.length; i++) {
-    console.log(pokeRes.types[i].type.name)
-    typeArray.push(pokeRes.types[i].type.name) 
-  }
-  console.log(typeArray)
+    typeArray.push(pokeRes.types[i].type.name);
+  };
+
   // Create a new pokemon model with relevant information
   let pokemon = new Pokemon({ 
     name: pokeRes.name,
@@ -45,22 +47,37 @@ async function getPokemon(req, res) {
     type: typeArray
   });
   
-  res.send(pokemon)
-}
-
-async function getMoves(req, res) {
-  let pokeRes = await P.getPokemonByName(req.params.pokeName);
-  let pokeMoves = pokeRes.moves;
-  let movesArray = [];
-
-  for(i = 0; i < pokeMoves.length; i++) {
-    movesArray.push(pokeMoves[i].move);
-  };
-
-  res.send(movesArray)
+  res.send(pokemon);
 };
 
-async function moveInfo(req, res) {
+// =============GET MOVES ARRAY CONTROLS============= \\
+async function getMoves(req, res) {
+  let pokeRes = await P.getPokemonByName(req.params.pokeName);
+  let movesArray = helpers.arrayObjProperty(pokeRes.moves, 'move');
+
+  res.send(movesArray);
+};
+
+// =============ALL HELD ITEMS ARRAY CONTROLS============= \\
+async function getItems(req, res) {
+  let itemResp = await P.getItemCategoryByName("held-items");
+  let activeResp = await P.getItemAttributeByName("holdable-active");
+
+  let items = helpers.arrayObjProperty(itemResp.items, 'name');
+  let activeItems = helpers.arrayObjProperty(activeResp.items, 'name');
+
+  let results = helpers.unionArrays(items, activeItems);
+
+  res.send(results);
+};
+
+// =============ALL NATURES ARRAY CONTROLS============= \\
+async function getNatures(req, res) {
+  //
+};
+
+// =============MOVE INFO CONTROLS============= \\
+async function getMoveInfo(req, res) {
   let body = await P.getMoveByName(req.params.moveName);
   let resObj = {};
 
@@ -77,8 +94,11 @@ async function moveInfo(req, res) {
 
   res.send(resObj);
 };
+
 module.exports = {
   getPokemon,
   getMoves,
-  moveInfo,
-}
+  getMoveInfo,
+  getItems,
+  getNatures,
+};

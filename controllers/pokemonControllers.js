@@ -3,23 +3,25 @@ const natures = require('../natures.json'),
       P = new Pokedex(),
       helpers = require('../utils/helpers.js');
 
-// =============POKEMON INFO CONTROLS============= \\
+/** =============POKEMON INFO CONTROLS=============
+ * We'll take only the info what we need, from the PokéAPI
+ * and turn it into something more managable.
+ */
 async function getPokemon(req, res) {
-  // This will return with way more information than we need
+  
   let pokeRes = await P.getPokemonByName(req.params.pokeName);
 
-  // Reformat stats of pokemon
+  // Reformat pokémon stats into key-value pairs.
   let pokeStats = {};
   for(i = 0; i < pokeRes.stats.length; i++) {
     let statName = pokeRes.stats[i].stat.name;
     pokeStats[statName] = pokeRes.stats[i].base_stat;
   };
   
-  // Reformat possible abilities of Pokemon
-  let abltyArray = [];
+  // Reformat pokémon abilities into an array. 
+  let pokeAbilities = [];
   for(i = 0; i < pokeRes.abilities.length; i++) {
     let toAdd = {};
-
     if(pokeRes.abilities[i].is_hidden == true) {
       toAdd.hidden = true;
     } else {
@@ -27,14 +29,17 @@ async function getPokemon(req, res) {
     };
 
     toAdd.ability = pokeRes.abilities[i].ability.name;
-    abltyArray.push(toAdd);
+    pokeAbilities.push(toAdd);
   };
 
-  // Reformat type(s) of Pokemon
-  // helpers.arrayObjProperty(pokeRes.types, 'type[name]')
-  let typeArray = [];
+  /**
+   *  Reformat type(s) of Pokemon
+   *  TODO: Why can't the following work?
+   *    helpers.arrayIter(pokeRes.types, "type.name")
+   */
+  let pokeTypes = [];
   for(i = 0; i < pokeRes.types.length; i++) {
-    typeArray.push(pokeRes.types[i].type.name);
+    pokeTypes.push(pokeRes.types[i].type.name);
   };
 
   // Create a new pokemon model with relevant information
@@ -42,8 +47,8 @@ async function getPokemon(req, res) {
     name: pokeRes.name,
     image: pokeRes.sprites.front_default,
     stats: pokeStats,
-    abilities: abltyArray,
-    type: typeArray
+    abilities: pokeAbilities,
+    type: pokeTypes
   };
   
   res.send(pokemon);
@@ -52,9 +57,9 @@ async function getPokemon(req, res) {
 // =============GET MOVES ARRAY CONTROLS============= \\
 async function getMoves(req, res) {
   let pokeRes = await P.getPokemonByName(req.params.pokeName);
-  let movesArray = helpers.arrayObjProperty(pokeRes.moves, 'move');
+  let pokeMoves = helpers.arrayIter(pokeRes.moves, 'move');
 
-  res.send(movesArray);
+  res.send(pokeMoves);
 };
 
 // =============ALL HELD ITEMS ARRAY CONTROLS============= \\
@@ -62,8 +67,8 @@ async function getItems(req, res) {
   let itemResp = await P.getItemCategoryByName("held-items");
   let activeResp = await P.getItemAttributeByName("holdable-active");
 
-  let items = helpers.arrayObjProperty(itemResp.items, 'name');
-  let activeItems = helpers.arrayObjProperty(activeResp.items, 'name');
+  let items = helpers.arrayIter(itemResp.items, 'name');
+  let activeItems = helpers.arrayIter(activeResp.items, 'name');
 
   let results = helpers.unionArrays(items, activeItems);
 
@@ -78,20 +83,20 @@ async function getNatures(req, res) {
 // =============MOVE INFO CONTROLS============= \\
 async function getMoveInfo(req, res) {
   let body = await P.getMoveByName(req.params.moveName);
-  let resObj = {};
+  let moveInfo = {};
 
-  // Restructure info 
-  resObj.accuracy = body.accuracy;
-  resObj.power = body.power;
-  resObj.pp = body.pp;
-  resObj.priority = body.priority;
-  resObj.name = body.name;
-  resObj.class = body.damage_class.name;
-  resObj.type = body.type.name;
-  resObj.target = body.target.name;
-  resObj.effect = body.effect_entries[0].short_effect;
+  // Restructure info into a flat object
+  moveInfo.accuracy = body.accuracy;
+  moveInfo.power = body.power;
+  moveInfo.pp = body.pp;
+  moveInfo.priority = body.priority;
+  moveInfo.name = body.name;
+  moveInfo.class = body.damage_class.name;
+  moveInfo.type = body.type.name;
+  moveInfo.target = body.target.name;
+  moveInfo.effect = body.effect_entries[0].short_effect;
 
-  res.send(resObj);
+  res.send(moveInfo);
 };
 
 module.exports = {

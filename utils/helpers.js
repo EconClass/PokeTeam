@@ -8,7 +8,7 @@ function unionArrays(x, y) {
   Finds the values of the specified property of objects
   in an array of objects. Returns an array of values.
 */
-function arrayObjProperty(inputArray, property) {
+function arrayIter(inputArray, property) {
   let results = []
   
   for(i = 0; i < inputArray.length; i++) {
@@ -20,5 +20,5 @@ function arrayObjProperty(inputArray, property) {
 
 module.exports = {
   unionArrays,
-  arrayObjProperty,
+  arrayIter,
 };

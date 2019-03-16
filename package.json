@@ -1,7 +1,11 @@
 {
-  "name": "PokeTeam",
+  "name": "poke-team",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "seed"
+  },
   "repository": "https://github.com/EconClass/PokeAPI.git",
   "author": "EconClass <bizmail327@gmail.com>",
   "license": "MIT",
@@ -13,6 +17,7 @@
     "jsonwebtoken": "^8.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.4.19",
+    "node-mongo-seeds": "^3.1.0",
     "pokedex-promise-v2": "^3.1.1"
   }
 }

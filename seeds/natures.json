@@ -1,0 +1,127 @@
+[
+  {
+    "name": "hardy",
+    "increased-stat": "none",
+    "decreased-stat": "none"
+  },
+  {
+    "name": "bold",
+    "increased-stat": "defense",
+    "decreased-stat": "attack"
+  },
+  {
+    "name": "modest",
+    "increased-stat": "special-attack",
+    "decreased-stat": "attack"
+  },
+  {
+    "name": "calm",
+    "increased-stat": "special-defense",
+    "decreased-stat": "attack"
+  },
+  {
+    "name": "timid",
+    "increased-stat": "speed",
+    "decreased-stat": "attack"
+  },
+  {
+    "name": "lonely",
+    "increased-stat": "attack",
+    "decreased-stat": "defense"
+  },
+  {
+    "name": "docile",
+    "increased-stat": "none",
+    "decreased-stat": "none"
+  },
+  {
+    "name": "mild",
+    "increased-stat": "special-attack",
+    "decreased-stat": "defense"
+  },
+  {
+    "name": "gentle",
+    "increased-stat": "special-defense",
+    "decreased-stat": "defense"
+  },
+  {
+    "name": "hasty",
+    "increased-stat": "speed",
+    "decreased-stat": "defense"
+  },
+  {
+    "name": "adamant",
+    "increased-stat": "attack",
+    "decreased-stat": "special-attack"
+  },
+  {
+    "name": "impish",
+    "increased-stat": "defense",
+    "decreased-stat": "special-attack"
+  },
+  {
+    "name": "bashful",
+    "increased-stat": "none",
+    "decreased-stat": "none"
+  },
+  {
+    "name": "careful",
+    "increased-stat": "special-defense",
+    "decreased-stat": "special-attack"
+  },
+  {
+    "name": "rash",
+    "increased-stat": "special-attack",
+    "decreased-stat": "special-defense"
+  },
+  {
+    "name": "jolly",
+    "increased-stat": "speed",
+    "decreased-stat": "special-attack"
+  },
+  {
+    "name": "naughty",
+    "increased-stat": "attack",
+    "decreased-stat": "special-defense"
+  },
+  {
+    "name": "lax",
+    "increased-stat": "defense",
+    "decreased-stat": "special-defense"
+  },
+  {
+    "name": "quirky",
+    "increased-stat": "none",
+    "decreased-stat": "none"
+  },
+  {
+    "name": "naive",
+    "increased-stat": "speed",
+    "decreased-stat": "special-defense"
+  },
+  {
+    "name": "brave",
+    "increased-stat": "attack",
+    "decreased-stat": "speed"
+  },
+  {
+    "name": "relaxed",
+    "increased-stat": "defense",
+    "decreased-stat": "speed"
+  },
+  {
+    "name": "quiet",
+    "increased-stat": "special-attack",
+    "decreased-stat": "speed"
+  },
+  {
+    "name": "sassy",
+    "increased-stat": "special-defense",
+    "decreased-stat": "speed"
+  },
+  {
+    "name": "serious",
+    "increased-stat": "none",
+    "decreased-stat": "none"
+  }
+]

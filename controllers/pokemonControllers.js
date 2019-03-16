@@ -1,4 +1,4 @@
-const Pokemon = require('../models/pokemon.js'),
+const natures = require('../natures.json'),
       Pokedex = require('pokedex-promise-v2'),
       P = new Pokedex(),
       helpers = require('../utils/helpers.js');
@@ -10,7 +10,6 @@ async function getPokemon(req, res) {
 
   // Reformat stats of pokemon
   let pokeStats = {};
-  
   for(i = 0; i < pokeRes.stats.length; i++) {
     let statName = pokeRes.stats[i].stat.name;
     pokeStats[statName] = pokeRes.stats[i].base_stat;
@@ -39,13 +38,13 @@ async function getPokemon(req, res) {
   };
 
   // Create a new pokemon model with relevant information
-  let pokemon = new Pokemon({ 
+  let pokemon = { 
     name: pokeRes.name,
     image: pokeRes.sprites.front_default,
     stats: pokeStats,
     abilities: abltyArray,
     type: typeArray
-  });
+  };
   
   res.send(pokemon);
 };
@@ -73,7 +72,7 @@ async function getItems(req, res) {
 
 // =============ALL NATURES ARRAY CONTROLS============= \\
 async function getNatures(req, res) {
-  //
+  res.send(natures);
 };
 
 // =============MOVE INFO CONTROLS============= \\

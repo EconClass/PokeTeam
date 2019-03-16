@@ -1,6 +1,6 @@
-const natures = require('../natures.json'),
-      Pokedex = require('pokedex-promise-v2'),
+const Pokedex = require('pokedex-promise-v2'),
       P = new Pokedex(),
+      Nature = require('../models/nature.js'),
       helpers = require('../utils/helpers.js');
 
 /** =============POKEMON INFO CONTROLS=============
@@ -8,7 +8,6 @@ const natures = require('../natures.json'),
  * and turn it into something more managable.
  */
 async function getPokemon(req, res) {
-  
   let pokeRes = await P.getPokemonByName(req.params.pokeName);
 
   // Reformat pokémon stats into key-value pairs.
@@ -32,11 +31,7 @@ async function getPokemon(req, res) {
     pokeAbilities.push(toAdd);
   };
 
-  /**
-   *  Reformat type(s) of Pokemon
-   *  TODO: Why can't the following work?
-   *    helpers.arrayIter(pokeRes.types, "type.name")
-   */
+  //  Reformat type(s) of Pokemon into an array.
   let pokeTypes = [];
   for(i = 0; i < pokeRes.types.length; i++) {
     pokeTypes.push(pokeRes.types[i].type.name);
@@ -77,7 +72,8 @@ async function getItems(req, res) {
 
 // =============ALL NATURES ARRAY CONTROLS============= \\
 async function getNatures(req, res) {
-  res.send(natures);
+  let natures = await Nature.find()
+  res.send(natures)
 };
 
 // =============MOVE INFO CONTROLS============= \\
@@ -85,7 +81,7 @@ async function getMoveInfo(req, res) {
   let body = await P.getMoveByName(req.params.moveName);
   let moveInfo = {};
 
-  // Restructure info into a flat object
+  // Restructure info into a one dimensional object
   moveInfo.accuracy = body.accuracy;
   moveInfo.power = body.power;
   moveInfo.pp = body.pp;

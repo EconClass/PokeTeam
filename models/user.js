@@ -9,7 +9,7 @@ const UserSchema = new Schema({
 },
 { timestamps: true });
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function(next) {
   // Check if password has been modified for this document.
   const user = this;
   if( !user.isModified('password')){

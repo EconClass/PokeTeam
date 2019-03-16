@@ -1,127 +1,127 @@
 [
   {
     "name": "hardy",
-    "increased-stat": "none",
-    "decreased-stat": "none"
+    "increasedStat": "none",
+    "decreasedStat": "none"
   },
   {
     "name": "bold",
-    "increased-stat": "defense",
-    "decreased-stat": "attack"
+    "increasedStat": "defense",
+    "decreasedStat": "attack"
   },
   {
     "name": "modest",
-    "increased-stat": "special-attack",
-    "decreased-stat": "attack"
+    "increasedStat": "special-attack",
+    "decreasedStat": "attack"
   },
   {
     "name": "calm",
-    "increased-stat": "special-defense",
-    "decreased-stat": "attack"
+    "increasedStat": "special-defense",
+    "decreasedStat": "attack"
   },
   {
     "name": "timid",
-    "increased-stat": "speed",
-    "decreased-stat": "attack"
+    "increasedStat": "speed",
+    "decreasedStat": "attack"
   },
   {
     "name": "lonely",
-    "increased-stat": "attack",
-    "decreased-stat": "defense"
+    "increasedStat": "attack",
+    "decreasedStat": "defense"
   },
   {
     "name": "docile",
-    "increased-stat": "none",
-    "decreased-stat": "none"
+    "increasedStat": "none",
+    "decreasedStat": "none"
   },
   {
     "name": "mild",
-    "increased-stat": "special-attack",
-    "decreased-stat": "defense"
+    "increasedStat": "special-attack",
+    "decreasedStat": "defense"
   },
   {
     "name": "gentle",
-    "increased-stat": "special-defense",
-    "decreased-stat": "defense"
+    "increasedStat": "special-defense",
+    "decreasedStat": "defense"
   },
   {
     "name": "hasty",
-    "increased-stat": "speed",
-    "decreased-stat": "defense"
+    "increasedStat": "speed",
+    "decreasedStat": "defense"
   },
   {
     "name": "adamant",
-    "increased-stat": "attack",
-    "decreased-stat": "special-attack"
+    "increasedStat": "attack",
+    "decreasedStat": "special-attack"
   },
   {
     "name": "impish",
-    "increased-stat": "defense",
-    "decreased-stat": "special-attack"
+    "increasedStat": "defense",
+    "decreasedStat": "special-attack"
   },
   {
     "name": "bashful",
-    "increased-stat": "none",
-    "decreased-stat": "none"
+    "increasedStat": "none",
+    "decreasedStat": "none"
   },
   {
     "name": "careful",
-    "increased-stat": "special-defense",
-    "decreased-stat": "special-attack"
+    "increasedStat": "special-defense",
+    "decreasedStat": "special-attack"
   },
   {
     "name": "rash",
-    "increased-stat": "special-attack",
-    "decreased-stat": "special-defense"
+    "increasedStat": "special-attack",
+    "decreasedStat": "special-defense"
   },
   {
     "name": "jolly",
-    "increased-stat": "speed",
-    "decreased-stat": "special-attack"
+    "increasedStat": "speed",
+    "decreasedStat": "special-attack"
   },
   {
     "name": "naughty",
-    "increased-stat": "attack",
-    "decreased-stat": "special-defense"
+    "increasedStat": "attack",
+    "decreasedStat": "special-defense"
   },
   {
     "name": "lax",
-    "increased-stat": "defense",
-    "decreased-stat": "special-defense"
+    "increasedStat": "defense",
+    "decreasedStat": "special-defense"
   },
   {
     "name": "quirky",
-    "increased-stat": "none",
-    "decreased-stat": "none"
+    "increasedStat": "none",
+    "decreasedStat": "none"
   },
   {
     "name": "naive",
-    "increased-stat": "speed",
-    "decreased-stat": "special-defense"
+    "increasedStat": "speed",
+    "decreasedStat": "special-defense"
   },
   {
     "name": "brave",
-    "increased-stat": "attack",
-    "decreased-stat": "speed"
+    "increasedStat": "attack",
+    "decreasedStat": "speed"
   },
   {
     "name": "relaxed",
-    "increased-stat": "defense",
-    "decreased-stat": "speed"
+    "increasedStat": "defense",
+    "decreasedStat": "speed"
   },
   {
     "name": "quiet",
-    "increased-stat": "special-attack",
-    "decreased-stat": "speed"
+    "increasedStat": "special-attack",
+    "decreasedStat": "speed"
   },
   {
     "name": "sassy",
-    "increased-stat": "special-defense",
-    "decreased-stat": "speed"
+    "increasedStat": "special-defense",
+    "decreasedStat": "speed"
   },
   {
     "name": "serious",
-    "increased-stat": "none",
-    "decreased-stat": "none"
+    "increasedStat": "none",
+    "decreasedStat": "none"
   }
 ]

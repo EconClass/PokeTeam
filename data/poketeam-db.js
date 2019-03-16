@@ -7,7 +7,8 @@ mongoose.connect(url, { useNewUrlParser: true },
   function(err, _){
     assert.equal(null, err)
     console.log('DB connection successful.')
-  }
+  },
+  { useFindAndModify: false }
 );
 
 mongoose.connection.on("error", console.error.bind(console, "MongoDB connection Error:"));

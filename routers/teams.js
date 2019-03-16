@@ -10,8 +10,8 @@ router.get('/teams/all', errHandler(teamControls.allTeams));
 
 // All are on the same endpoint
 router.route('/team/:teamId')
-  .put(errHandler(teamControls.updateTeam)) // UPDATE TEAM
-  .get(errHandler(teamControls.oneTeam))// SEE ONE TEAM
-  .delete(errHandler(teamControls.deleteTeam));// DELETE ONE TEAM
+  .put(errHandler(teamControls.updateTeam))     // UPDATE TEAM
+  .get(errHandler(teamControls.oneTeam))        // SEE ONE TEAM
+  .delete(errHandler(teamControls.deleteTeam)); // DELETE ONE TEAM
 
 module.exports = router;

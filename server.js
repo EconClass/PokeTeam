@@ -6,6 +6,7 @@ const express = require('express'),
       bodyparser = require('body-parser'),
       methodoverride = require('method-override'),
       app = express(),
+      cookieparser = require('cookie-parser'),
       port = process.env.PORT || 3000;
 
 //========================MIDDLEWARE========================\\
@@ -14,6 +15,7 @@ const express = require('express'),
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(methodoverride('_method'));
+app.use(cookieparser());
 
 // Mongoose Connection
 require('./data/poketeam-db');

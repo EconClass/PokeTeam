@@ -4,13 +4,12 @@ function unionArrays(x, y) {
   return result;
 }
 
-/* 
-  Finds the values of the specified property of objects
-  in an array of objects. Returns an array of values.
-*/
+/** 
+ * Finds the values of the specified property of objects
+ * in an array of objects. Returns an array of values.
+ */
 function arrayIter(inputArray, property) {
   let results = []
-  
   for(i = 0; i < inputArray.length; i++) {
     results.push(inputArray[i][property])
   };

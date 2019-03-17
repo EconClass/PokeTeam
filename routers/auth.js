@@ -10,10 +10,14 @@ router.get('/', (req, res) => {
 // CREATE USER
 router.post('/user', errHandler(authControls.createUser));
 
-// 
+// LOGIN
+router.post('/login', errHandler(authControls.logIn));
+
+// USES SAME ENDPOINT
 router.route('/user/:userId')
-  .get(errHandler(authControls.seeUser)) // SEE USER INFO
-  .put(errHandler(authControls.updateUser)) // UPDATE USER INFO
+  .all(errHandler(authControls.authorize))      // CHECK IF USER HAS ACCESS
+  .get(errHandler(authControls.seeUser))        // SEE USER INFO
+  .put(errHandler(authControls.updateUser))     // UPDATE USER INFO
   .delete(errHandler(authControls.deleteUser)); // DELETE USER ACCOUNT
 
 module.exports = router;

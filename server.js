@@ -18,12 +18,12 @@ app.use(methodoverride('_method'));
 app.use(cookieparser());
 
 // Mongoose Connection
-require('./data/poketeam-db');
+require('./data/poketeam-db.js');
 
 // Routers
-const authRoutes = require('./routers/auth');
-const teamRoutes = require('./routers/teams');
-const pokeRoutes = require('./routers/pokemons.js')
+const authRoutes = require('./routers/auth.js');
+const teamRoutes = require('./routers/teams.js');
+const pokeRoutes = require('./routers/pokemons.js');
 app.use(authRoutes);
 app.use(teamRoutes);
 app.use(pokeRoutes);

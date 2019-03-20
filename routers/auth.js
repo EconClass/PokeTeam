@@ -1,6 +1,7 @@
 const router = require('express').Router(),
       authControls = require('../controllers/authControllers.js'),
-      errHandler = require('../utils/errorHandler.js');
+      errHandler = require('../utils/errorHandler.js'),
+      authUser = require("../utils/helpers.js").authorize;
 
 // HOME
 router.get('/', (req, res) => {
@@ -15,7 +16,7 @@ router.post('/login', errHandler(authControls.logIn));
 
 // USES SAME ENDPOINT
 router.route('/user/:userId')
-  .all(errHandler(authControls.authorize))      // CHECK IF USER HAS ACCESS
+  .all(errHandler(authUser))      // CHECK IF USER HAS ACCESS
   .get(errHandler(authControls.seeUser))        // SEE USER INFO
   .put(errHandler(authControls.updateUser))     // UPDATE USER INFO
   .delete(errHandler(authControls.deleteUser)); // DELETE USER ACCOUNT

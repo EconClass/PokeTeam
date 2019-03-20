@@ -1,5 +1,8 @@
 const mongoose = require('mongoose'),
-      Schema = mongoose.Schema;
+      Schema = mongoose.Schema,
+      mongoosePaginate = require('mongoose-paginate');
+
+mongoosePaginate.paginate.options = { limit: 3 };
 
 const TeamSchema = new Schema({
   name: { type: String, required: true },
@@ -7,5 +10,7 @@ const TeamSchema = new Schema({
   pokemon: [Object],
 },
 { timestamps: true });
+
+TeamSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model ('Team', TeamSchema );

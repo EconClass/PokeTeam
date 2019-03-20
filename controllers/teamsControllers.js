@@ -11,6 +11,14 @@ async function updateTeam(req, res) {
   res.send(team);
 };
 
+async function addMon(req, res) {
+  let team = await Team.findOne({_id: req.params.teamId});
+  let pokemon = new Pokemon(req.body);
+  team.pokemon.unshift(pokemon);
+  await team.save();
+  res.sendStatus(200);
+}
+
 async function allTeams(req, res) {
   let teams = await Team.find();
   res.send(teams);
@@ -29,6 +37,7 @@ async function deleteTeam(req, res) {
 module.exports = {
   createTeam,
   updateTeam,
+  addMon,
   allTeams,
   oneTeam,
   deleteTeam,

@@ -51,31 +51,6 @@ async function logIn(req, res) {
   res.cookie("nToken", token, { maxAge: 900000, httpOnly: true }).sendStatus(200);
 };
 
-// AUTHORIZE User access.
-async function authorize(req, res, next) {
-  if (typeof req.cookies.nToken === "undefined" || req.cookies.nToken === null) {
-    req.user = null;
-    res.status(400).send('Unauthorized Access.');
-  } else {
-    let token = req.cookies.nToken;
-    let decodedToken = jwt.decode(token, { complete: true }) || {};
-    req.user = decodedToken.payload;
-  };
-  next();
-};
-
-// GET a User's account info.
-async function seeUser(req, res, next) {
-  let user = await User.findOne({ _id: req.params.userId });
-  res.send(user);
-};
-
-// UPDATE a User's account info.
-async function updateUser(req, res, next) {
-  await User.findOneAndUpdate({ _id: req.params.userId }, req.body);
-  res.sendStatus(200);
-};
-
 // DELETE a User's account.
 async function deleteUser(req, res, next) {
   await User.findOneAndDelete({ _id: req.params.userId });

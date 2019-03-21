@@ -36,11 +36,8 @@ async function updateUser(req, res) {
 async function logIn(req, res) {
   const username = req.body.username;
   const password = req.body.password;
-  console.log("REQUEST", req)
-  console.log("REQUEST BODY", req.body)
-  console.log("USERNAME", req.body.username)
+  
   const user = await User.findOne({ username }, "username password");
-  console.log("USER", user)
   
   if (!user) {
     return res.status(401).send({ message: "Wrong Username" });

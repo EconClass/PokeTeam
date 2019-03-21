@@ -32,12 +32,6 @@ async function authorize(req, res, next) {
   next();
 };
 
-// GET a User's account info.
-async function seeUser(req, res, next) {
-  let user = await User.findOne({ _id: req.params.userId });
-  res.send(user);
-};
-
 // UPDATE a User's account info.
 async function updateUser(req, res, next) {
   await User.findOneAndUpdate({ _id: req.params.userId }, req.body);

@@ -12,6 +12,9 @@ router.get('/teams/all', errHandler(teamControls.allTeams));
 // SEE ONE TEAM
 router.get('/team/:teamId', errHandler(teamControls.getOneTeam));
 
+// ADD POKEMON TO TEAM
+router.patch("/api/team/:teamId/pokemon", errHandler(authUser), errHandler(teamControls.addMon));
+
 // All are on the same endpoint
 router.route('/api/team/:teamId')
   .all(errHandler(authUser)

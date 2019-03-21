@@ -20,7 +20,7 @@ async function addMon(req, res) {
 }
 
 async function allTeams(req, res) {
-  let teams = await Team.find();
+  let teams = await Team.paginate();
   res.send(teams);
 };
 

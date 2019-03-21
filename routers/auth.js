@@ -14,6 +14,9 @@ router.post('/user', errHandler(authControls.createUser));
 // LOGIN
 router.post('/login', errHandler(authControls.logIn));
 
+// LOGOUT
+router.get('/logout', errHandler(authUser), errHandler(authControls.logOut));
+
 // USES SAME ENDPOINT
 router.route('/user/:userId')
   .all(errHandler(authUser))      // CHECK IF USER HAS ACCESS

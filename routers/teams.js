@@ -17,7 +17,7 @@ router.patch("/api/team/:teamId/pokemon", errHandler(authUser), errHandler(teamC
 
 // All are on the same endpoint
 router.route('/api/team/:teamId')
-  .all(errHandler(authUser)
+  .all(errHandler(authUser))
   .put(errHandler(teamControls.updateTeam))     // UPDATE TEAM
   .delete(errHandler(teamControls.deleteTeam)); // DELETE ONE TEAM
 

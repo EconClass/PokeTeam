@@ -8,7 +8,7 @@ const express = require('express'),
       app = express(),
       cookieparser = require('cookie-parser'),
       cors = require("cors"),
-      port = process.env.PORT || 3000;
+      port = process.env.PORT || 5000;
 
 //========================MIDDLEWARE========================\\
 

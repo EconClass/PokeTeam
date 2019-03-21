@@ -20,6 +20,18 @@ async function createUser(req, res) {
   res.cookie('nToken', token, { maxAge: 900000, httpOnly: true }).sendStatus(200);
 };
 
+// SEE User account info.
+async function seeUser(req, res) {
+  let user = await User.findOne({ _id: req.params.userId });
+  res.send(user);
+}
+
+// UPDATE User account info.
+async function updateUser(req, res) {
+  await User.findOneAndUpdate({ _id: req.params.userId }, req.body);
+  res.status(200).send("Updated User");
+}
+
 // LOGIN to existing account.
 async function logIn(req, res) {
   const username = req.body.username;
@@ -51,6 +63,11 @@ async function logIn(req, res) {
   res.cookie("nToken", token, { maxAge: 900000, httpOnly: true }).sendStatus(200);
 };
 
+// LOGOUT
+async function logOut(req, res) {
+  res.clearCookie('nToken');ß
+  res.sendStatus(200);
+}
 // DELETE a User's account.
 async function deleteUser(req, res, next) {
   await User.findOneAndDelete({ _id: req.params.userId });
@@ -60,7 +77,7 @@ async function deleteUser(req, res, next) {
 module.exports = {
   createUser,
   logIn,
-  authorize,
+  logOut,
   seeUser,
   updateUser,
   deleteUser,

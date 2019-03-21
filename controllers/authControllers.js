@@ -36,17 +36,20 @@ async function updateUser(req, res) {
 async function logIn(req, res) {
   const username = req.body.username;
   const password = req.body.password;
-
+  console.log("REQUEST", req)
+  console.log("REQUEST BODY", req.body)
+  console.log("USERNAME", req.body.username)
   const user = await User.findOne({ username }, "username password");
+  console.log("USER", user)
   
   if (!user) {
-    return res.status(401).send({ message: "Wrong Username or Password" });
+    return res.status(401).send({ message: "Wrong Username" });
   }
 
   // Check the password
   user.comparePassword(password, (err, isMatch) => {
     if (!isMatch) {
-      return res.status(401).send({ message: "Wrong Username or password" });
+      return res.status(401).send({ message: "Wrong password" });
     };
   });
   
@@ -65,7 +68,7 @@ async function logIn(req, res) {
 
 // LOGOUT
 async function logOut(req, res) {
-  res.clearCookie('nToken');ß
+  res.clearCookie('nToken');
   res.sendStatus(200);
 }
 // DELETE a User's account.

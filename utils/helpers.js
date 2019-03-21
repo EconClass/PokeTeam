@@ -21,7 +21,7 @@ function arrayIter(inputArray, property) {
 
 // AUTHORIZE User access.
 async function authorize(req, res, next) {
-  if (typeof req.cookies.nToken === "undefined" || req.cookies.nToken === null) {
+  if (typeof req.cookies.nToken === "" || req.cookies.nToken === null) {
     req.user = null;
     res.status(400).send('Unauthorized Access.');
   } else {

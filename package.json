@@ -2,6 +2,9 @@
   "name": "PokeTeam",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "repository": "https://github.com/EconClass/PokeTeam.git",
   "author": "EconClass <bizmail327@gmail.com>",
   "license": "MIT",

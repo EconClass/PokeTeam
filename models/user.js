@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
-      bcrypt = require('bcrypt'),
-      Schema = mongoose.Schema;
+  bcrypt = require('bcrypt'),
+  Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   username: { type: String, required: true },
@@ -15,6 +15,7 @@ UserSchema.pre('save', function(next) {
   if( !user.isModified('password')){
     return next();
   };
+
   // Encrypt password before saving the document.
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (err, hash) => {

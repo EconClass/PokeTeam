@@ -1,7 +1,7 @@
 const router = require('express').Router(),
-      authControls = require('../controllers/authControllers.js'),
-      errHandler = require('../utils/errorHandler.js'),
-      authUser = require("../utils/helpers.js").authorize;
+  authControls = require('../controllers/authControllers.js'),
+  errHandler = require('../utils/errorHandler.js'),
+  authUser = require("../utils/helpers.js").authorize;
 
 // HOME
 router.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
-      Schema = mongoose.Schema,
-      mongoosePaginate = require('mongoose-paginate');
+  Schema = mongoose.Schema,
+  mongoosePaginate = require('mongoose-paginate');
 
 mongoosePaginate.paginate.options = { limit: 3 };
 

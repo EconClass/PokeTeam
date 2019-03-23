@@ -1,6 +1,6 @@
 const router = require('express').Router(),
-      pokemonControls = require('../controllers/pokemonControllers.js'),
-      errHandler = require('../utils/errorHandler.js');
+  pokemonControls = require('../controllers/pokemonControllers.js'),
+  errHandler = require('../utils/errorHandler.js');
 
 // GET POKEMON BY NAME
 router.get('/pokemon/:pokeName', errHandler(pokemonControls.getPokemon));

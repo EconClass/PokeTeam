@@ -1,7 +1,7 @@
 const Pokedex = require('pokedex-promise-v2'),
-      P = new Pokedex(),
-      Nature = require('../models/nature.js'),
-      helpers = require('../utils/helpers.js');
+  P = new Pokedex(),
+  Nature = require('../models/nature.js'),
+  helpers = require('../utils/helpers.js');
 
 /** =============POKEMON INFO CONTROLS=============
  * We'll take only the info what we need, from the PokéAPI

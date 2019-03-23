@@ -1,4 +1,5 @@
-const Team = require('../models/team.js');
+const Team = require('../models/team.js'),
+  Pokemon = require('../models/pokemon.js');
 
 async function createTeam(req, res) {
   let team = new Team(req.body);
@@ -13,8 +14,8 @@ async function updateTeam(req, res) {
 
 async function addMon(req, res) {
   let team = await Team.findOne({_id: req.params.teamId});
-  let pokemon = new Pokemon(req.body);
-  team.pokemon.unshift(pokemon);
+  let addmon = new Pokemon(req.body);
+  team.pokemon.unshift(addmon);
   await team.save();
   res.sendStatus(200);
 }

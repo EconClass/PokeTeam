@@ -1,6 +1,6 @@
 const User = require('../models/user.js'),
-      jwt = require('jsonwebtoken'),
-      secret = process.env.SECRET;
+  jwt = require('jsonwebtoken'),
+  secret = process.env.SECRET;
 
 // CREATE a User account.
 async function createUser(req, res) {

@@ -3,12 +3,12 @@ if (!process.env.PORT) {
 };
 
 const express = require('express'),
-      bodyparser = require('body-parser'),
-      methodoverride = require('method-override'),
-      app = express(),
-      cookieparser = require('cookie-parser'),
-      cors = require("cors"),
-      port = process.env.PORT || 5000;
+  bodyparser = require('body-parser'),
+  methodoverride = require('method-override'),
+  app = express(),
+  cookieparser = require('cookie-parser'),
+  cors = require("cors"),
+  port = process.env.PORT || 5000;
 
 //========================MIDDLEWARE========================\\
 

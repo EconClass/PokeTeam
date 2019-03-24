@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   mongoosePaginate = require('mongoose-paginate');
 
-mongoosePaginate.paginate.options = { limit: 3 };
+mongoosePaginate.paginate.options = { limit: 6 };
 
 const TeamSchema = new Schema({
   name: { type: String, required: true },

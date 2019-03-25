@@ -26,7 +26,7 @@ require('./data/poketeam-db.js');
 
 // HOME
 app.get('/', (req, res) => {
-  res.sendFile(path.join( __dirname + '/docs/index.html'))
+  res.send('Documentation at: https://econclass.github.io/PokeTeam/')
 });
 
 // Routers

@@ -3,6 +3,7 @@ const Team = require('../models/team.js'),
 
 async function createTeam(req, res) {
   let team = new Team(req.body);
+  team.trainer = req.user.username
   await team.save();
   res.send('Team created.');
 };

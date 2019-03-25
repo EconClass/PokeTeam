@@ -21,13 +21,15 @@ function arrayIter(inputArray, property) {
 
 // AUTHORIZE User access.
 async function authorize(req, res, next) {
-  if (typeof req.cookies.nToken === "" || req.cookies.nToken === null) {
-    req.user = null;
+  console.log("COOKIE:\n", req.cookies.nToken)
+  if ( req.cookies.nToken === undefined || req.cookies.nToken === "" ) {
+    req.user = undefined;
     res.status(400).send('Unauthorized Access.');
   } else {
     let token = req.cookies.nToken;
     let decodedToken = jwt.decode(token, { complete: true }) || {};
     req.user = decodedToken.payload;
+    console.log("User:\n", req.user)
   };
   next();
 };

@@ -6,6 +6,7 @@ mongoosePaginate.paginate.options = { limit: 6 };
 
 const TeamSchema = new Schema({
   name: { type: String, required: true },
+  trainer: String,
   description: String,
   pokemon: [Object],
 },

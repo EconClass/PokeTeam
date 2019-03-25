@@ -32,12 +32,6 @@ async function authorize(req, res, next) {
   next();
 };
 
-// UPDATE a User's account info.
-async function updateUser(req, res, next) {
-  await User.findOneAndUpdate({ _id: req.params.userId }, req.body);
-  res.sendStatus(200);
-};
-
 module.exports = {
   unionArrays,
   arrayIter,

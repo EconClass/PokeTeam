@@ -56,7 +56,7 @@ Teams are resources available to be seen to anyone, but can only be manipulated 
 #### Example Team
 
 ``` JSON
-// Pokemon is an array of Pokemon objects
+// "pokemon" is an array of Pokemon objects
 {
   "name": "Name of team.",
   "trainer": "Username of creator",

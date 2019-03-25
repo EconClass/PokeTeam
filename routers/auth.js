@@ -3,11 +3,6 @@ const router = require('express').Router(),
   errHandler = require('../utils/errorHandler.js'),
   authUser = require("../utils/helpers.js").authorize;
 
-// HOME
-router.get('/', (req, res) => {
-  res.send('Hello');
-});
-
 // CREATE USER
 router.post('/user', errHandler(authControls.createUser));
 

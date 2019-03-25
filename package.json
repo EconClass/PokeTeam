@@ -19,6 +19,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.4.19",
     "mongoose-paginate": "^5.0.3",
+    "path": "^0.12.7",
     "pokedex-promise-v2": "^3.1.1"
   }
 }

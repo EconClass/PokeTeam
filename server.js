@@ -6,6 +6,7 @@ const express = require('express'),
   bodyparser = require('body-parser'),
   methodoverride = require('method-override'),
   app = express(),
+  path = require('path'),
   cookieparser = require('cookie-parser'),
   cors = require("cors"),
   port = process.env.PORT || 5000;
@@ -22,6 +23,11 @@ app.options('*', cors());
 
 // Mongoose Connection
 require('./data/poketeam-db.js');
+
+// HOME
+app.get('/', (req, res) => {
+  res.sendFile(path.join( __dirname + '/docs/index.html'))
+});
 
 // Routers
 const authRoutes = require('./routers/auth.js');

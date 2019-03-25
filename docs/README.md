@@ -55,12 +55,13 @@ Teams are resources available to be seen to anyone, but can only be manipulated 
 
 #### Example Team
 
-``` json
+``` JSON
+// Pokemon is an array of Pokemon objects
 {
   "name": "Name of team.",
   "trainer": "Username of creator",
   "description": "Optional description.",
-  "pokemon": [...], // This is an array of Pokemon objects.
+  "pokemon": [...],
 }
 ```
 
@@ -173,12 +174,6 @@ Full route: `https://poke-team-node.herokuapp.com/held-items`
   "focus-band",
   "scope-lens",
   "leftovers",
-  "shell-bell",
-  "lax-incense",
-  "wide-lens",
-  "muscle-band",
-  "wise-glasses",
-  "expert-belt",
   ....
 ]
 ```

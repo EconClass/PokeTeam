@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-      assert = require('assert');
+assert = require('assert');
 
 const url = process.env.MONGODB_URI || "mongodb://localhost/poketeam-db";
 

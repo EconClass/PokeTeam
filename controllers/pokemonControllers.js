@@ -19,17 +19,21 @@ async function getPokemon(req, res) {
   
   // Reformat pokémon abilities into an array. 
   let pokeAbilities = [];
-  for(i = 0; i < pokeRes.abilities.length; i++) {
-    let toAdd = {};
-    if(pokeRes.abilities[i].is_hidden == true) {
-      toAdd.hidden = true;
-    } else {
-      toAdd.hidden = false;
-    };
 
-    toAdd.ability = pokeRes.abilities[i].ability.name;
+  pokeRes.abilities.map(ablty => {
+    let toAdd = {};
+    ablty.is_hidden ? toAdd.hidden = true: toAdd.hidden = false;
+    toAdd.ability = ablty.ability.name;
     pokeAbilities.push(toAdd);
-  };
+  });
+  // for(i = 0; i < pokeRes.abilities.length; i++) {
+  //   let toAdd = {};
+
+  //   pokeRes.abilities[i].is_hidden ? toAdd.hidden = true: toAdd.hidden = false;
+
+  //   toAdd.ability = pokeRes.abilities[i].ability.name;
+  //   pokeAbilities.push(toAdd);
+  // };
 
   //  Reformat type(s) of Pokemon into an array.
   let pokeTypes = [];
@@ -81,7 +85,7 @@ async function getMoveInfo(req, res) {
   let body = await P.getMoveByName(req.params.moveName);
   let moveInfo = {};
 
-  // Restructure info into a one dimensional object
+  // Flatten data
   moveInfo.accuracy = body.accuracy;
   moveInfo.power = body.power;
   moveInfo.pp = body.pp;

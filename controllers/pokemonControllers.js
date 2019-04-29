@@ -12,10 +12,10 @@ async function getPokemon(req, res) {
 
   // Reformat pokémon stats into key-value pairs.
   let pokeStats = {};
-  for(i = 0; i < pokeRes.stats.length; i++) {
-    let statName = pokeRes.stats[i].stat.name;
-    pokeStats[statName] = pokeRes.stats[i].base_stat;
-  };
+  pokeRes.stats.map(s => {
+    let statName = s.stat.name;
+    pokeStats[statName] = s.base_stat;
+  })
   
   // Reformat pokémon abilities into an array. 
   let pokeAbilities = [];
@@ -26,20 +26,12 @@ async function getPokemon(req, res) {
     toAdd.ability = ablty.ability.name;
     pokeAbilities.push(toAdd);
   });
-  // for(i = 0; i < pokeRes.abilities.length; i++) {
-  //   let toAdd = {};
-
-  //   pokeRes.abilities[i].is_hidden ? toAdd.hidden = true: toAdd.hidden = false;
-
-  //   toAdd.ability = pokeRes.abilities[i].ability.name;
-  //   pokeAbilities.push(toAdd);
-  // };
 
   //  Reformat type(s) of Pokemon into an array.
   let pokeTypes = [];
-  for(i = 0; i < pokeRes.types.length; i++) {
-    pokeTypes.push(pokeRes.types[i].type.name);
-  };
+  pokeRes.types.map(t => {
+    pokeTypes.push(t.type.name);
+  })
 
   // Create a new pokemon model with relevant information
   let pokemon = { 

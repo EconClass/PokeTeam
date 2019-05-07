@@ -83,6 +83,7 @@ async function getMoveInfo(req, res) {
   moveInfo.pp = body.pp;
   moveInfo.priority = body.priority;
   moveInfo.name = body.name;
+  
   moveInfo.class = body.damage_class.name;
   moveInfo.type = body.type.name;
   moveInfo.target = body.target.name;

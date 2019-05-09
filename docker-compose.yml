@@ -1,4 +1,4 @@
-version: "2"
+version: "3.3"
 services:
   app:
     container_name: poketeam
@@ -8,10 +8,15 @@ services:
       - "5000:5000"
     links:
       - mongo
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+    depends_on:
+      - mongo
   mongo:
-    container_name: mongo
     image: mongo
     volumes:
       - ./docker-data/db:/data/db
     ports:
       - "27017:27017"
+volumes:
+  mongo_data:

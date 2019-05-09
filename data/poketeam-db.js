@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
 assert = require('assert');
 
-const url = process.env.MONGODB_URI || "mongodb://mongo/poketeam-db";// || "mongodb://localhost/poketeam-db";
+const url = process.env.MONGODB_URI || "mongodb://localhost/poketeam-db"; // || "mongodb://mongo/poketeam-db";
 
 mongoose.connect(url, { useNewUrlParser: true },
   function(err, _){

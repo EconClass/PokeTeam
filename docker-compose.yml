@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 services:
   app:
     container_name: poketeam
@@ -6,10 +6,8 @@ services:
     build: .
     ports:
       - "5000:5000"
-    links:
-      - mongo
     environment:
-      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_URI=mongodb://mongo/poketeam-db
     depends_on:
       - mongo
   mongo:

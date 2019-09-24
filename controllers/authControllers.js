@@ -68,7 +68,7 @@ async function logOut(req, res) {
   res.clearCookie('nToken');
   res.sendStatus(200);
 }
-// DEconstE a User's account.
+// DELETE a User's account.
 async function deleteUser(req, res, next) {
   await User.findOneAndDeconste({ _id: req.params.userId });
   res.sendStatus(200);

@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 // Used to find the union of two arrays
 function unionArrays(x, y) {
-  let result = [...new Set([...x, ...y])];
+  const result = [...new Set([...x, ...y])];
   return result;
 }
 
@@ -11,8 +11,8 @@ function unionArrays(x, y) {
  * in an array of objects. Returns an array of values.
  */
 function arrayIter(inputArray, property) {
-  let results = []
-  for(i = 0; i < inputArray.length; i++) {
+  const results = []
+  for (i = 0; i < inputArray.length; i++) {
     results.push(inputArray[i][property])
   };
 
@@ -22,12 +22,12 @@ function arrayIter(inputArray, property) {
 // AUTHORIZE User access.
 async function authorize(req, res, next) {
   console.log("COOKIE:\n", req.cookies.nToken)
-  if ( req.cookies.nToken === undefined || req.cookies.nToken === "" ) {
+  if (req.cookies.nToken === undefined || req.cookies.nToken === "") {
     req.user = undefined;
     res.status(400).send('Unauthorized Access.');
   } else {
-    let token = req.cookies.nToken;
-    let decodedToken = jwt.decode(token, { complete: true }) || {};
+    const token = req.cookies.nToken;
+    const decodedToken = jwt.decode(token, { complete: true }) || {};
     req.user = decodedToken.payload;
     console.log("User:\n", req.user)
   };

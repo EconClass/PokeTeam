@@ -8,74 +8,74 @@ const Pokedex = require('pokedex-promise-v2'),
  * and turn it into something more managable.
  */
 async function getPokemon(req, res) {
-  let pokeRes = await P.getPokemonByName(req.params.pokeName);
+  const pokeRes = await P.getPokemonByName(req.params.pokeName);
 
   // Reformat pokémon stats into key-value pairs.
-  let pokeStats = {};
+  const pokeStats = {};
   pokeRes.stats.map(s => {
-    let statName = s.stat.name;
+    const statName = s.stat.name;
     pokeStats[statName] = s.base_stat;
   })
-  
+
   // Reformat pokémon abilities into an array. 
-  let pokeAbilities = [];
+  const pokeAbilities = [];
 
   pokeRes.abilities.map(ablty => {
-    let toAdd = {};
-    ablty.is_hidden ? toAdd.hidden = true: toAdd.hidden = false;
+    const toAdd = {};
+    ablty.is_hidden ? toAdd.hidden = true : toAdd.hidden = false;
     toAdd.ability = ablty.ability.name;
     pokeAbilities.push(toAdd);
   });
 
   //  Reformat type(s) of Pokemon into an array.
-  let pokeTypes = [];
+  const pokeTypes = [];
   pokeRes.types.map(t => {
     pokeTypes.push(t.type.name);
   })
 
   // Create a new pokemon model with relevant information
-  let pokemon = { 
+  const pokemon = {
     name: pokeRes.name,
     image: pokeRes.sprites.front_default,
     stats: pokeStats,
     abilities: pokeAbilities,
     type: pokeTypes
   };
-  
+
   res.send(pokemon);
 };
 
 // =============GET MOVES ARRAY CONTROLS============= \\
 async function getMoves(req, res) {
-  let pokeRes = await P.getPokemonByName(req.params.pokeName);
-  let pokeMoves = helpers.arrayIter(pokeRes.moves, 'move');
+  const pokeRes = await P.getPokemonByName(req.params.pokeName);
+  const pokeMoves = helpers.arrayIter(pokeRes.moves, 'move');
 
   res.send(pokeMoves);
 };
 
 // =============ALL HELD ITEMS ARRAY CONTROLS============= \\
 async function getItems(req, res) {
-  let itemResp = await P.getItemCategoryByName("held-items");
-  let activeResp = await P.getItemAttributeByName("holdable-active");
+  const itemResp = await P.getItemCategoryByName("held-items");
+  const activeResp = await P.getItemAttributeByName("holdable-active");
 
-  let items = helpers.arrayIter(itemResp.items, 'name');
-  let activeItems = helpers.arrayIter(activeResp.items, 'name');
+  const items = helpers.arrayIter(itemResp.items, 'name');
+  const activeItems = helpers.arrayIter(activeResp.items, 'name');
 
-  let results = helpers.unionArrays(items, activeItems);
+  const results = helpers.unionArrays(items, activeItems);
 
   res.send(results);
 };
 
 // =============ALL NATURES ARRAY CONTROLS============= \\
 async function getNatures(req, res) {
-  let natures = await Nature.find()
+  const natures = await Nature.find()
   res.send(natures)
 };
 
 // =============MOVE INFO CONTROLS============= \\
 async function getMoveInfo(req, res) {
-  let body = await P.getMoveByName(req.params.moveName);
-  let moveInfo = {};
+  const body = await P.getMoveByName(req.params.moveName);
+  const moveInfo = {};
 
   // Flatten data
   moveInfo.accuracy = body.accuracy;
@@ -83,7 +83,7 @@ async function getMoveInfo(req, res) {
   moveInfo.pp = body.pp;
   moveInfo.priority = body.priority;
   moveInfo.name = body.name;
-  
+
   moveInfo.class = body.damage_class.name;
   moveInfo.type = body.type.name;
   moveInfo.target = body.target.name;

@@ -4,25 +4,25 @@ const User = require('../models/user.js'),
 
 // CREATE a User account.
 async function createUser(req, res) {
-  let user = new User(req.body);
+  const user = new User(req.body);
   await user.save();
 
   // Creates a Json Web Token to keep track of user sessions.
-  let token = jwt.sign({
-      _id: user._id,
-      username: user.username 
-    },
+  const token = jwt.sign({
+    _id: user._id,
+    username: user.username
+  },
     secret,
     { expiresIn: "60 days" },
   );
-  
+
   // Sets the token to a cookie in user's browser.
   res.cookie('nToken', token, { maxAge: 900000, httpOnly: true }).sendStatus(200);
 };
 
 // SEE User account info.
 async function seeUser(req, res) {
-  let user = await User.findOne({ _id: req.params.userId });
+  const user = await User.findOne({ _id: req.params.userId });
   res.send(user);
 }
 
@@ -36,9 +36,9 @@ async function updateUser(req, res) {
 async function logIn(req, res) {
   const username = req.body.username;
   const password = req.body.password;
-  
+
   const user = await User.findOne({ username }, "username password");
-  
+
   if (!user) {
     return res.status(401).send({ message: "Wrong Username" });
   }
@@ -49,12 +49,12 @@ async function logIn(req, res) {
       return res.status(401).send({ message: "Wrong password" });
     };
   });
-  
+
   // Create token
-  const token = jwt.sign({ 
-      _id: user._id,
-      username: user.username
-    },
+  const token = jwt.sign({
+    _id: user._id,
+    username: user.username
+  },
     process.env.SECRET,
     { expiresIn: "60 days" }
   );
@@ -68,9 +68,9 @@ async function logOut(req, res) {
   res.clearCookie('nToken');
   res.sendStatus(200);
 }
-// DELETE a User's account.
+// DEconstE a User's account.
 async function deleteUser(req, res, next) {
-  await User.findOneAndDelete({ _id: req.params.userId });
+  await User.findOneAndDeconste({ _id: req.params.userId });
   res.sendStatus(200);
 };
 

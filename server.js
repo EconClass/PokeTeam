@@ -12,6 +12,7 @@ const express = require('express'),
 //========================MIDDLEWARE========================\\
 
 // Dependencies
+app.use(express.json())
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(methodoverride('_method'));

@@ -1,6 +1,6 @@
-const errHandler = (fn) =>
+const errHandler = (fnct) =>
   (req, res, next) => {
-    Promise.resolve(fn(req, res, next))
+    Promise.resolve(fnct(req, res, next))
       .catch(next);
   };
 

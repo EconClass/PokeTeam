@@ -5,7 +5,7 @@ const Pokedex = require('pokedex-promise-v2'),
 
 /** =============POKEMON INFO CONTROLS=============
  * We'll take only the info what we need, from the PokéAPI
- * and turn it into something more managable.
+ * and turn it into something more manageable.
  */
 async function getPokemon(req, res) {
   const pokeRes = await P.getPokemonByName(req.params.pokeName);
@@ -48,7 +48,7 @@ async function getPokemon(req, res) {
 // =============GET MOVES ARRAY CONTROLS============= \\
 async function getMoves(req, res) {
   const pokeRes = await P.getPokemonByName(req.params.pokeName);
-  const pokeMoves = helpers.arrayIter(pokeRes.moves, 'move');
+  const pokeMoves = pokeRes.moves.map((move) => move.name)
 
   res.send(pokeMoves);
 };
@@ -58,10 +58,11 @@ async function getItems(req, res) {
   const itemResp = await P.getItemCategoryByName("held-items");
   const activeResp = await P.getItemAttributeByName("holdable-active");
 
-  const items = helpers.arrayIter(itemResp.items, 'name');
-  const activeItems = helpers.arrayIter(activeResp.items, 'name');
+  const items = itemResp.items.map((item) => item.name);
+  const activeItems = activeResp.items.map((item) => item.name);
 
-  const results = helpers.unionArrays(items, activeItems);
+  // find the union of the the two arrays
+  const results = [...new Set([...items, ...activeItems])];
 
   res.send(results);
 };
@@ -74,20 +75,31 @@ async function getNatures(req, res) {
 
 // =============MOVE INFO CONTROLS============= \\
 async function getMoveInfo(req, res) {
-  const body = await P.getMoveByName(req.params.moveName);
-  const moveInfo = {};
+  const {
+    accuracy,
+    power,
+    pp,
+    priority,
+    name,
+    damage_class,
+    type,
+    target,
+    effect_entries
+  } = await P.getMoveByName(req.params.moveName);
 
   // Flatten data
-  moveInfo.accuracy = body.accuracy;
-  moveInfo.power = body.power;
-  moveInfo.pp = body.pp;
-  moveInfo.priority = body.priority;
-  moveInfo.name = body.name;
+  const moveInfo = {
+    accuracy,
+    power,
+    pp,
+    priority,
+    name,
+  };
 
-  moveInfo.class = body.damage_class.name;
-  moveInfo.type = body.type.name;
-  moveInfo.target = body.target.name;
-  moveInfo.effect = body.effect_entries[0].short_effect;
+  moveInfo.class = damage_class.name;
+  moveInfo.type = type.name;
+  moveInfo.target = target.name;
+  moveInfo.effect = effect_entries[0].effect;
 
   res.send(moveInfo);
 };

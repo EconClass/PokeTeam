@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
 const authRoutes = require('./routers/auth.js');
 const teamRoutes = require('./routers/teams.js');
 const pokeRoutes = require('./routers/pokemons.js');
+const got = require('got');
+
 app.use(authRoutes);
 app.use(teamRoutes);
 app.use(pokeRoutes);
@@ -38,3 +40,29 @@ app.use(pokeRoutes);
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
 });
+
+const { GA_TRACKING_ID } = process.env;
+
+const trackEvent = (category, action, label, value) => {
+  const data = {
+    // API Version.
+    v: '1',
+    // Tracking ID / Property ID.
+    tid: GA_TRACKING_ID,
+    // Anonymous Client Identifier. Ideally, this should be a UUID that
+    // is associated with particular user, device, or browser instance.
+    cid: '555',
+    // Event hit type.
+    t: 'event',
+    // Event category.
+    ec: category,
+    // Event action.
+    ea: action,
+    // Event label.
+    el: label,
+    // Event value.
+    ev: value,
+  };
+
+  return got.post('http://www.google-analytics.com/collect', data);
+};

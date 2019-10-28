@@ -33,7 +33,7 @@ async function oneTeam(req, res) {
 
 async function deleteTeam(req, res) {
   await Team.findOneAndDelete({ _id: req.params.teamId })
-  res.send('Team delted.')
+  res.send('Team deleted.')
 };
 
 module.exports = {

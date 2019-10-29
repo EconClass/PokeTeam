@@ -1,7 +1,6 @@
 const Pokedex = require('pokedex-promise-v2'),
   P = new Pokedex(),
-  Nature = require('../models/nature.js'),
-  helpers = require('../utils/helpers.js');
+  Nature = require('../models/nature.js');
 
 /** =============POKEMON INFO CONTROLS=============
  * We'll take only the info what we need, from the PokéAPI
@@ -10,30 +9,23 @@ const Pokedex = require('pokedex-promise-v2'),
 async function getPokemon(req, res) {
   const pokeRes = await P.getPokemonByName(req.params.pokeName);
 
-  // Reformat pokémon stats into key-value pairs.
+  // Reformat pokémon stats into key-value pairs
   const pokeStats = {};
-  pokeRes.stats.map(s => {
+  pokeRes.stats.forEach(s => {
     const statName = s.stat.name;
     pokeStats[statName] = s.base_stat;
   })
 
-  // Reformat pokémon abilities into an array. 
-  const pokeAbilities = [];
-
-  pokeRes.abilities.map(ablty => {
-    const toAdd = {};
-    ablty.is_hidden ? toAdd.hidden = true : toAdd.hidden = false;
-    toAdd.ability = ablty.ability.name;
-    pokeAbilities.push(toAdd);
+  // Reformat pokémon abilities into an array
+  const pokeAbilities = pokeRes.abilities.reduce((acc = [], { ability, is_hidden }) => {
+    const temp = ability[name];
+    return acc.push({ temp: is_hidden });
   });
 
   //  Reformat type(s) of Pokemon into an array.
-  const pokeTypes = [];
-  pokeRes.types.map(t => {
-    pokeTypes.push(t.type.name);
-  })
+  const pokeTypes = pokeRes.types.map(type => type.type.name);
 
-  // Create a new pokemon model with relevant information
+  // Create a new pokemon object with relevant information
   const pokemon = {
     name: pokeRes.name,
     image: pokeRes.sprites.front_default,

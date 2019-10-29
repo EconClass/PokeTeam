@@ -1,4 +1,30 @@
 const jwt = require("jsonwebtoken");
+const got = require('got');
+const { GA_TRACKING_ID } = process.env;
+
+const trackEvent = (category, action, label, value) => {
+  const data = {
+    // API Version.
+    v: '1',
+    // Tracking ID / Property ID.
+    tid: GA_TRACKING_ID,
+    // Anonymous Client Identifier. Ideally, this should be a UUID that
+    // is associated with particular user, device, or browser instance.
+    cid: '555',
+    // Event hit type.
+    t: 'event',
+    // Event category.
+    ec: category,
+    // Event action.
+    ea: action,
+    // Event label.
+    el: label,
+    // Event value.
+    ev: value,
+  };
+
+  return got.post('http://www.google-analytics.com/collect', data);
+};
 
 // AUTHORIZE User access.
 async function authorize(req, res, next) {
@@ -15,4 +41,5 @@ async function authorize(req, res, next) {
 
 module.exports = {
   authorize,
+  trackEvent,
 };

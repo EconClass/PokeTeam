@@ -7,6 +7,7 @@ const Pokedex = require('pokedex-promise-v2'),
  * and turn it into something more manageable.
  */
 async function getPokemon(req, res) {
+  console.log(req.params.pokeName)
   const pokeRes = await P.getPokemonByName(req.params.pokeName);
 
   // Reformat pokémon stats into key-value pairs
@@ -16,10 +17,14 @@ async function getPokemon(req, res) {
     pokeStats[statName] = s.base_stat;
   })
 
+  const pokeAbilities = [];
   // Reformat pokémon abilities into an array
-  const pokeAbilities = pokeRes.abilities.reduce((acc = [], { ability, is_hidden }) => {
-    const temp = ability[name];
-    return acc.push({ temp: is_hidden });
+  pokeRes.abilities.forEach(({ ability, is_hidden }) => {
+    pokeAbilities.push({
+      ability: ability.name,
+      url: ability.url,
+      hidden: is_hidden
+    });
   });
 
   //  Reformat type(s) of Pokemon into an array.

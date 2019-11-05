@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const got = require('got');
 const { GA_TRACKING_ID } = process.env;
+const gaUrl = 'http://www.google-analytics.com/collect';
 
 const trackEvent = (category, action, label, value) => {
   const data = {
@@ -23,7 +24,27 @@ const trackEvent = (category, action, label, value) => {
     ev: value,
   };
 
-  return got.post('http://www.google-analytics.com/collect', data);
+  return got.post(gaUrl, data);
+};
+
+const trackPage = (page, title) => {
+  const data = {
+    // API Version.
+    v: '1',
+    // Tracking ID / Property ID.
+    tid: GA_TRACKING_ID,
+    // Anonymous Client Identifier. Ideally, this should be a UUID that
+    // is associated with particular user, device, or browser instance.
+    cid: '555',
+    // Event hit type.
+    t: 'pageview',
+    // Document hostname.
+    dh: 'poke-team-node.herokuapp.com',
+    dp: page,   // Ex: `/home`
+    dt: title,  // "homepage"
+  };
+
+  return got.post(gaUrl, data);
 };
 
 // AUTHORIZE User access.
@@ -42,4 +63,5 @@ async function authorize(req, res, next) {
 module.exports = {
   authorize,
   trackEvent,
+  trackPage
 };

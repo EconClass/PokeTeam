@@ -7,25 +7,25 @@ const UserSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
 },
-{ timestamps: true });
+  { timestamps: true });
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   // Check if password has been modified for this document.
   const user = this;
-  if( !user.isModified('password')){
+  if (!user.isModified('password')) {
     return next();
   };
 
   // Encrypt password before saving the document.
   bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(user.password, salt, (err, hash) => {
+    bcrypt.hash(user.password, salt, null, (err, hash) => {
       user.password = hash;
       next();
     });
   });
 });
 
-UserSchema.methods.comparePassword = function(password, done) {
+UserSchema.methods.comparePassword = function (password, done) {
   bcrypt.compare(password, this.password, (err, isMatch) => {
     done(err, isMatch);
   });

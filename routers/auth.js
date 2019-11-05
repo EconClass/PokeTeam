@@ -14,7 +14,7 @@ router.get('/logout', errHandler(authUser), errHandler(authControls.logOut));
 
 // USES SAME ENDPOINT
 router.route('/user/:userId')
-  .all(errHandler(authUser))      // CHECK IF USER HAS ACCESS
+  .all(errHandler(authUser))                    // CHECK IF USER HAS ACCESS
   .get(errHandler(authControls.seeUser))        // SEE USER INFO
   .put(errHandler(authControls.updateUser))     // UPDATE USER INFO
   .delete(errHandler(authControls.deleteUser)); // DELETE USER ACCOUNT
